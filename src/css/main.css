@@ -1,0 +1,8 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+body {
+  height: 100%;
+  background: #eee;
+  background-color: #eee;
+  font-family: "Noto Sans TC", sans-serif;
+  color: rgba(0, 0, 0, 0.75) }
