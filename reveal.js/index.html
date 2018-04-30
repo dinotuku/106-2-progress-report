@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>1st Progress Report</title>
+	<title>3rd Progress Report</title>
 
 	<meta name="description" content="1st Progress Report of Special Project of Prof. Lin-Shan Lee">
 	<meta name="author" content="Kuan Tung, Jing-Lun Dai">
@@ -14,8 +14,11 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/reveal.min.css">
 	<link rel="stylesheet" href="css/theme/simple.css">
+
+	<!-- Custom theme settings -->
+	<link rel="stylesheet" href="css/custom.css">
 
 	<!-- Theme used for syntax highlighting of code -->
 	<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -40,7 +43,7 @@
 
 			<section>
 				<h2>
-					<b>1st Progress Report</b>
+					<b>3rd Progress Report</b>
 				</h2>
 				<p class="intro thin">
 					<br/>
@@ -52,7 +55,7 @@
 					<br/>
 					<small>指導助教：鍾佩宏學長</small>
 					<br/>
-					<small>報告日期：2018/03/14</small>
+					<small>報告日期：2018/05/02</small>
 					<br/>
 				</p>
 			</section>
@@ -72,72 +75,12 @@
 
 				<section>
 					<h3>
-						<b>Last Semester</b>
+						<b>Recap</b>
 					</h3>
-					<br/>
-					<ul class="thin">
-						<li>Experiment with different RL methods (Double, Dueling, DDPG)</li>
-						<li>Change
-							<b>user</b> behaviors in training and testing stage</li>
-					</ul>
-				</section>
-
-				<section>
-					<h3>
-						<b>Next Step</b>
-					</h3>
-					<br/>
-					<p class="fragment">
-						<b>User Simulator</b>
-					</p>
-					<p class="fragment">
-						<b>End-to-end Traning</b>
-					</p>
-				</section>
-
-			</section>
-
-			<section>
-				<h3>
-					<b>Winter Vacation</b>
-				</h3>
-				<br/>
-				<ul class="thin">
-					<li>Paper study</li>
-					<li>Build a user simulator</li>
-					<li>Build multiple user simulators</li>
-				</ul>
-			</section>
-
-			<section>
-
-				<section>
-					<h3>
-						<b>Paper Study</b>
-					</h3>
-					<br/>
-					<p class="thin">
-						<em>Analysis of Interactive Spoken Content Retrieval Using Probabilistic Simulated Users</em>
-					</p>
-					<p class="thin">
-						<em>Iterative Policy Learning in End-to-end Trainable Task-oriented Neural Dialogue Models</em>
-					</p>
-				</section>
-
-				<section>
-					<h3>
-						<b>What We've Learned</b>
-					</h3>
-					<p class="thin sub">
-						<small>About User Simulator</small>
-					</p>
-					<ul class="thin">
-						<li>Patience</li>
-						<li>Satisfaction levels</li>
-						<li>Share similar reward with agent</li>
-						<li>Iterative Training</li>
-						<li>Set epsilon while testing</li>
-					</ul>
+					<div class="thin">
+						<p>Report the result of the trainable user simulator</p>
+						<p>Switch to another dataset (SQuAD)</p>
+					</div>
 				</section>
 
 			</section>
@@ -146,31 +89,23 @@
 
 				<section>
 					<h3>
-						<b>Build A User Simulator</b>
+						<b>SQuAD</b>
 					</h3>
-					<br/>
-					<ul class="thin">
-						<li>Input
-							<br/>
-							<small>One-hot vector indicating which document is relevent</small>
-						</li>
-						<li>Output
-							<br/>
-							<small>Response type (choose document, ignore agent, satisfy)</small>
-						</li>
-					</ul>
+					<div class="thin">
+						<p>
+							<b>S</b>tanford
+							<b>Qu</b>estion
+							<b>A</b>nswering
+							<b>D</b>ataset</p>
+						<p>A new (2016) reading comprehension dataset</p>
+						<p>QAs and articles are from Wikipedia</p>
+						<p>100,000+ questions, 500+ articles</p>
+						<p>Spoken version</p>
+					</div>
 				</section>
 
 				<section>
-					<h3>
-						<b>Problems</b>
-					</h3>
-					<br/>
-					<ul class="thin">
-						<li>There are different types of questions</li>
-						<li>One user simulator can't handle different scenarios</li>
-						<li>Should have multiple user simulators</li>
-					</ul>
+					<img data-src="https://i.imgur.com/K32V9Ce.png">
 				</section>
 
 			</section>
@@ -179,32 +114,89 @@
 
 				<section>
 					<h3>
-						<b>Build Multiple User Simulators</b>
+						<b>Data Preprocessing</b>
 					</h3>
-					<br/>
-					<p class="thin">One for each question</p>
-					<p class="thin">4 questions => 4 user simulators</p>
-				</section>
-
-				<section>
-					<img data-src="https://i.imgur.com/l0ZaZLa.png">
-					<p>
-						<small>感謝鍾佩宏學長</small>
-					</p>
+					<ul class="thin">
+						<li>Answer as query</li>
+						<li>Title as query</li>
+						<li>Word which has the highest tf-idf as query</li>
+					</ul>
 				</section>
 
 				<section>
 					<h3>
-						<b>Experiments</b>
+						<b>Title as query</b>
 					</h3>
-					<br/>
-					<ul class="thin">
-						<li>All / Raw features</li>
-						<li>Onebest / Lattice data</li>
-						<li>Different RL methods</li>
-					</ul>
-					<br/>
-					<p class="fragment">Result will be reported next time</p>
+					<div class="thin">
+						<p>Remove titles with latin words and weird number</p>
+						<p>Beyoncé, Molotov E2 80 93Ribbentrop Pact</p>
+						<p>433 quries / 18425 documents</p>
+						<p class="fragment">Very low MAP due to bugs</p>
+					</div>
+				</section>
+
+				<section>
+					<h3>
+						<b>Debug</b>
+					</h3>
+					<div class="thin">
+						<p>Naming document file without zero fill</p>
+						<p>Dictionary will not preserve insert order (Python &lt; 3.5)</p>
+					</div>
+				</section>
+
+				<section>
+					<h3>
+						<b>TF-IDF</b>
+					</h3>
+					<div class="thin small">
+						<p>Keep queries which have enough relevent documents</p>
+						<table>
+							<thead>
+								<tr>
+									<th>Range</th>
+									<th>Queries</th>
+									<th>Documents</th>
+									<th>Pairs</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>10~20</td>
+									<td>916</td>
+									<td>9929</td>
+									<td>13553</td>
+								</tr>
+								<tr>
+									<td>20~30</td>
+									<td>314</td>
+									<td>6673</td>
+									<td>7946</td>
+								</tr>
+								<tr>
+									<td>20~40</td>
+									<td>486</td>
+									<td>10353</td>
+									<td>14164</td>
+								</tr>
+							</tbody>
+						</table>
+						<p class="fragment">First pass MAP was way too high (0.9x)</p>
+						<p class="fragment">MAP goes down after each interaction</p>
+					</div>
+				</section>
+
+				<section>
+					<h3>
+						<b>Switch back to using title as query</b>
+					</h3>
+					<div class="thin">
+						<p>Keep titles which have 10~60 paragraphs</p>
+						<p>346 queris, 11862 documents</p>
+						<p class="fragment">0.1596 / 723.57 (MAP / Return)</p>
+						<p class="fragment">MAP goes up after each interaction</p>
+						<p class="fragment">Only one action is selected</p>
+					</div>
 				</section>
 
 			</section>
@@ -213,14 +205,15 @@
 				<h2>
 					<b>End</b>
 				</h2>
-				<p class="thin sub"><small>Thanks for your attention</small></p>
-				<!-- <img data-src="https://i.imgur.com/Lo8o6Mo.gif"> -->
+				<p class="thin sub">
+					<small>Thanks for your attention</small>
+				</p>
 			</section>
 		</div>
 	</div>
 
 	<script src="lib/js/head.min.js"></script>
-	<script src="js/reveal.js"></script>
+	<script src="js/reveal.min.js"></script>
 
 	<script>
 		// More info about config & dependencies:
