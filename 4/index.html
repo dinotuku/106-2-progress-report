@@ -285,11 +285,12 @@
             <b>Network Architecture</b>
           </h3>
           <ul class="thin small">
+            <li>Backup: contains a gated residual connection</li>
             <li>Redidual block: 2 64 channel 3x3 conv</li>
-            <li>Embedding network: 64 channel 3x3 conv --> 3 residual blocks --> 32 channel 1x1 conv --> linear layer (128 dim)</li>
-            <li>Simulation network: 32 channel 3x3 conv --> 2 residual blocks --> 32 channel 1x1 conv + MLP with single hidden
+            <li>Simulation: 32 channel 3x3 conv --> 2 residual blocks --> 32 channel 1x1 conv + MLP with single hidden
+            <li>Embedding: 64 channel 3x3 conv --> 3 residual blocks --> 32 channel 1x1 conv --> linear layer (128 dim)</li>
               layer (128 dim)</li>
-            <li>Readout network: MLP with single hidden layer (128 dim)</li>
+            <li>Readout: MLP with single hidden layer (128 dim)</li>
           </ul>
           <img data-src="https://i.imgur.com/1looGRS.png">
         </section>
