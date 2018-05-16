@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>3rd Progress Report</title>
+  <title>4th Progress Report</title>
 
   <meta name="description" content="1st Progress Report of Special Project of Prof. Lin-Shan Lee">
   <meta name="author" content="Kuan Tung, Jing-Lun Dai">
@@ -43,7 +43,7 @@
 
       <section>
         <h2>
-          <b>3rd Progress Report</b>
+          <b>4th Progress Report</b>
         </h2>
         <p class="intro thin">
           <br/>
@@ -55,7 +55,7 @@
           <br/>
           <small>指導助教：鍾佩宏學長</small>
           <br/>
-          <small>報告日期：2018/05/02</small>
+          <small>報告日期：2018/05/16</small>
           <br/>
         </p>
       </section>
@@ -78,14 +78,132 @@
             <b>Recap</b>
           </h3>
           <div class="thin">
-            <p>Report the result of the trainable user simulator</p>
-            <p>Switch to another dataset (SQuAD)</p>
+            <!-- <p>Report the SQuAD result</p> -->
+            <p>Paper study</p>
           </div>
         </section>
 
       </section>
 
       <section>
+
+        <section>
+          <h3>
+            <b>A Locality-Preserving Essence Vector Modeling
+              <br/>Framework for Spoken Document Retrieval (ICASSP, 2017)</b>
+          </h3>
+        </section>
+        
+        <section>
+          <h3>
+            <b>Objective</b>
+          </h3>
+          <ul class="thin">
+            <li>Propose a paragraph embedding method</li>
+            <li>Distill the most representative information</li>
+            <li>Preserve semantic locality in the learned embedding space</li>
+            <!-- <li>Word which has the highest tf-idf as query</li> -->
+          </ul>
+        </section>
+
+        <!-- <section>
+          <img data-src="https://i.imgur.com/5lkWPr3.png">
+        </section>
+
+        <section>
+          <h3>
+            <b>Recap</b>
+          </h3>
+          <div class="thin">
+            <p>Report the SQuAD result</p>
+            <p>Paper study</p>
+          </div>
+        </section> -->
+
+      </section>
+
+      <section>
+
+        <!-- <section>
+          <h3>
+            <b>A Locality-Preserving Essence Vector Modeling
+              <br/>Framework for Spoken Document Retrieval (ICASSP, 2017)</b>
+          </h3>
+        </section> -->
+        
+        <section>
+          <h3>
+            <b>Locality-preserving essence vector (LPEV) model</b>
+          </h3>
+          <ul class="thin">
+            <p>Given training pairs from neighboring-paragraph set $\mathbb{D}^+$ and faraway-paragraph set $\mathbb{D}^-$, and vocabulary set $\mathbb{V}$,</p>
+            <li>$P_{D_t}$ ($|\mathbb{V}|$-dim): frequency count of a word/ term in $D_t$ (normalized to unit-sum)</li>
+            <li>$P_{BG}$ ($|\mathbb{V}|$-dim): frequency count of a word/ term in $\mathbb{D}$ (normalized to unit-sum)</li>
+            <!-- <li>Neighboring-paragraph set D+, faraway-paragraph set D-</li> -->
+          </ul>
+        </section>
+
+        <section>
+          <h3>
+            <b>Component: fully connected multilayer NN</b>
+          </h3>
+          <ul class="thin">
+            <li>Paragraph encoder: \[ f(P_{D_t}) = v_{D_t} \]</li>
+            <!-- <script type="math/tex; mode=display">
+              f(P_{D_t}) = v_{D_t}
+            </script></li> -->
+             <!-- <b>f(P_Dt) = v_Dt</b> -->
+            <li>Background encoder: \[ g(P_{BG}) = v_{BG} \]</li>
+            <li>Decoder: \[ h(\alpha_{D_t}*v_{D_t}+(1-\alpha_{D_t})*v_{BG}) = P_{D_t}' \]</li>
+            <!-- <li>Word which has the highest tf-idf as query</li> -->
+          </ul>
+        </section>
+
+        <section>
+          <h3>
+            <b>Objective function</b>
+          </h3>
+          <img data-src="https://i.imgur.com/XFdXOuw.png">
+          <img data-src="https://i.imgur.com/T53eZkx.png">
+          <!-- <ul class="thin">
+            <li>Paragraph encoder: <b>f(P_Dt) = v_Dt</b></li>
+            <li>Background encoder: <b>g(P_BG) = v_BG</b></li>
+            <li>Decoder: <b>h(a_Dt*v_Dt+(1-a_Dt)*v_BG) = P_Dt', h(v_BG) = P_BG', a_Dt = q(v_Dt,v_BG)</b></li>
+            <!-- <li>Word which has the highest tf-idf as query</li>
+          </ul>  -->
+        </section>
+
+        <section>
+          <h3>
+            <b>Architecture</b>
+          </h3>
+          <img data-src="https://i.imgur.com/TF2s1QE.png">
+          <!-- <img data-src="https://i.imgur.com/T53eZkx.png"> -->
+          <!-- <ul class="thin">
+            <li>Paragraph encoder: <b>f(P_Dt) = v_Dt</b></li>
+            <li>Background encoder: <b>g(P_BG) = v_BG</b></li>
+            <li>Decoder: <b>h(a_Dt*v_Dt+(1-a_Dt)*v_BG) = P_Dt', h(v_BG) = P_BG', a_Dt = q(v_Dt,v_BG)</b></li>
+            <!-- <li>Word which has the highest tf-idf as query</li>
+          </ul>  -->
+        </section>
+
+        <!-- <section>
+          <img data-src="https://i.imgur.com/5lkWPr3.png">
+        </section>
+
+        <section>
+          <h3>
+            <b>Recap</b>
+          </h3>
+          <div class="thin">
+            <p>Report the SQuAD result</p>
+            <p>Paper study</p>
+          </div>
+        </section> -->
+
+      </section>
+
+      <!-- <section>
 
         <section>
           <h3>
@@ -145,34 +263,70 @@
           <img data-src="https://i.imgur.com/K32V9Ce.png">
         </section>
 
-      </section>
+      </section> -->
 
       <section>
 
         <section>
           <h3>
-            <b>Data Preprocessing</b>
+            <b>Experimental setup</b>
           </h3>
           <ul class="thin">
-            <li>Answer as query</li>
-            <li>Title as query</li>
-            <li>Word which has the highest tf-idf as query</li>
+            <li>Dataset: Topic Detection and Tracking (TDT-2)</li>
+            <li>Spoken doc: Mandarin news from Voice of America w/ labels</li>
+            <li>Query: Chinese news from Xinhua News Agency w/ labels (long: whole, short:title)</li>
+            <li>Avg word error rate (WER): 35%</li>
+            <li>Evaluation: MAP (label)</li>
           </ul>
         </section>
 
         <section>
           <h3>
-            <b>Title as query</b>
+            <b>Experimental results</b>
           </h3>
           <div class="thin">
-            <p>Remove titles with latin words and weird number</p>
-            <p>Beyoncé, Molotov E2 80 93Ribbentrop Pact</p>
-            <p>433 quries / 18425 documents</p>
-            <p class="fragment">Very low MAP due to bugs</p>
+            <p>Training sample: query + 1 irrelevant doc as $\mathbb{D}^-$ + ...</p>
+            <li>Case 1: 2 relevant (clicked) docs as $\mathbb{D}^+$</li>
+            <li>Case 2: top 3 documents in the 1st retrieval as $\mathbb{D}^+$</li>
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Case 1 (long)</th>
+                  <th>Case 1 (short)</th>
+                  <th>Case 2 (long)</th>
+                  <th>Case 2 (short)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>EV</td>
+                  <td>0.518</td>
+                  <td>0.364</td>
+                  <td>0.518</td>
+                  <td><b>0.364</b></td>
+                </tr>
+                <tr>
+                  <td>LP</td>
+                  <td><b>0.567</b></td>
+                  <td>0.381</td>
+                  <td>0.507</td>
+                  <td>0.339</td>
+                </tr>
+                <tr>
+                  <td>LPEV</td>
+                  <td>0.556</td>
+                  <td><b>0.390</b></td>
+                  <td><b>0.533</b></td>
+                  <td>0.339</td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- <p class="fragment">Very low MAP due to bugs</p> -->
           </div>
         </section>
 
-        <section>
+<!--         <section>
           <h3>
             <b>Debug</b>
           </h3>
@@ -234,7 +388,7 @@
             <p class="fragment">MAP goes up after each interaction</p>
             <p class="fragment">Only one action is selected</p>
           </div>
-        </section>
+        </section> -->
 
       </section>
 
@@ -261,6 +415,7 @@
       dependencies: [
         { src: 'plugin/markdown/marked.js' },
         { src: 'plugin/markdown/markdown.js' },
+        { src: 'plugin/math/math.js' },
         { src: 'plugin/notes/notes.js', async: true },
         { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
       ]
