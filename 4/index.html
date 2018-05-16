@@ -265,7 +265,7 @@
           <p class="thin small">Repeat the following steps for M times</p>
           <ol class="thin small">
             <li>Forward simulation from root state</li>
-            <li>Sample action based on simulation policy, compute reward and next state</li>
+            <li>Sample action based on simulation policy, compute reward and next state, increment $t$</li>
             <li>Evaluation final leaf node using the embedding network</li>
             <li>Back-up using the back-up network</li>
           </ol>
