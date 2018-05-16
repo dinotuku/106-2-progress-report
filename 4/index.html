@@ -273,19 +273,6 @@
         </section>
 
         <section>
-          <h3>
-            <b>Network Architecture</b>
-          </h3>
-          <ul class="thin small">
-            <li>Redidual block: 2 64 channel 3x3 conv</li>
-            <li>Embedding network: 64 channel 3x3 conv --> 3 residual blocks --> 32 channel 1x1 conv</li>
-            <li>Simulation network: 32 channel 3x3 conv --> 2 residual blocks --> 32 channel 1x1 conv</li>
-            <li>Readout network: MLP with single hidden layer (128 dim)</li>
-          </ul>
-          <img data-src="https://i.imgur.com/1looGRS.png">
-        </section>
-
-        <section>
           <img data-src="https://i.imgur.com/TlsMrZe.png">
         </section>
 
@@ -294,7 +281,34 @@
         </section>
 
         <section>
-          <h4><b>Gradient (Improved version of REINFORCE)</b></h4>
+          <h3>
+            <b>Network Architecture</b>
+          </h3>
+          <ul class="thin small">
+            <li>Redidual block: 2 64 channel 3x3 conv</li>
+            <li>Embedding network: 64 channel 3x3 conv --> 3 residual blocks --> 32 channel 1x1 conv --> linear layer (128 dim)</li>
+            <li>Simulation network: 32 channel 3x3 conv --> 2 residual blocks --> 32 channel 1x1 conv + MLP with single hidden
+              layer (128 dim)</li>
+            <li>Readout network: MLP with single hidden layer (128 dim)</li>
+          </ul>
+          <img data-src="https://i.imgur.com/1looGRS.png">
+        </section>
+
+        <section>
+          <h4>
+            <b>Backup</b>
+          </h4>
+          <img data-src="https://i.imgur.com/ll1in2Z.png">
+          <h4>
+            <b>Simulation</b>
+          </h4>
+          <img data-src="https://i.imgur.com/t5NUq8m.png">
+        </section>
+
+        <section>
+          <h4>
+            <b>Gradient (Improved version of REINFORCE)</b>
+          </h4>
           <img data-src="https://i.imgur.com/3WZjZTi.png">
           <img data-src="https://i.imgur.com/FMXC3co.png">
         </section>
@@ -304,7 +318,9 @@
       <section>
 
         <section>
-          <h3><b>Sokoban</b></h3>
+          <h3>
+            <b>Sokoban</b>
+          </h3>
           <img data-src="https://i.imgur.com/JUE3b2p.gif">
           <p class="thin">Input vector: $10 \times 10 \times 4$</p>
           <p class="thin">wall, agent, box, target</p>
