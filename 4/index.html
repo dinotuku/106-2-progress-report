@@ -111,8 +111,8 @@
             <b>Locality-preserving essence vector (LPEV) model</b>
           </h3>
           <ul class="thin">
-            <p>Given training pairs from neighboring-paragraph set $\mathbb{D}^+$ and faraway-paragraph set $\mathbb{D}^-$,
-              and vocabulary set $\mathbb{V}$,</p>
+            <p>Given training pairs from the neighboring-paragraph set $\mathbb{D}^+$ and faraway-paragraph set $\mathbb{D}^-$,
+              and the vocabulary set $\mathbb{V}$,</p>
             <li>$P_{D_t}$ ($|\mathbb{V}|$-dim): frequency count of a word/ term in $D_t$ (normalized to unit-sum)</li>
             <li>$P_{BG}$ ($|\mathbb{V}|$-dim): frequency count of a word/ term in $\mathbb{D}$ (normalized to unit-sum)</li>
           </ul>
@@ -125,13 +125,13 @@
           <ul class="thin">
             <li>Paragraph encoder: \[ f(P_{D_t}) = v_{D_t} \]</li>
             <li>Background encoder: \[ g(P_{BG}) = v_{BG} \]</li>
-            <li>Decoder: \[ h(\alpha_{D_t}*v_{D_t}+(1-\alpha_{D_t})*v_{BG}) = P_{D_t}' \]</li>
+            <li>Decoder: \[ h(\alpha_{D_t} \times v_{D_t}+(1-\alpha_{D_t}) \times v_{BG}) = P_{D_t}' \] \[ h(v_{BG}) = P_{BG}' \]</li>
           </ul>
         </section>
 
         <section>
           <h3>
-            <b>Objective function</b>
+            <b>Objective function (ADAM)</b>
           </h3>
           <img data-src="https://i.imgur.com/XFdXOuw.png">
           <img data-src="https://i.imgur.com/T53eZkx.png">
@@ -155,7 +155,7 @@
           <ul class="thin">
             <li>Dataset: Topic Detection and Tracking (TDT-2)</li>
             <li>Spoken doc: Mandarin news from Voice of America w/ labels</li>
-            <li>Query: Chinese news from Xinhua News Agency w/ labels (long: whole, short:title)</li>
+            <li>Query: Chinese news from Xinhua News Agency (long: whole, short:title)</li>
             <li>Avg word error rate (WER): 35%</li>
             <li>Evaluation: MAP (label)</li>
           </ul>
