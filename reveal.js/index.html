@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>4th Progress Report</title>
+  <title>5th Progress Report</title>
 
   <meta name="description" content="1st Progress Report of Special Project of Prof. Lin-Shan Lee">
   <meta name="author" content="Kuan Tung, Jing-Lun Dai">
@@ -43,7 +43,7 @@
 
       <section>
         <h2>
-          <b>4th Progress Report</b>
+          <b>5th Progress Report</b>
         </h2>
         <p class="intro thin">
           <br/>
@@ -55,7 +55,7 @@
           <br/>
           <small>指導助教：鍾佩宏學長</small>
           <br/>
-          <small>報告日期：2018/05/16</small>
+          <small>報告日期：2018/06/06</small>
           <br/>
         </p>
       </section>
@@ -70,13 +70,16 @@
         </section>
 
         <section>
-          <img data-src="https://i.imgur.com/5lkWPr3.png">
-        </section>
-
-        <section>
-          <h3>
+          <p>
+            <b>Experiments</b>
+          </p>
+          <ul class="small" style="list-style: none;">
+            <li>Small improvement on spoken SQuAD</li>
+            <li>Supervised baseline on PTV corpus</li>
+          </ul>
+          <p>
             <b>Paper study</b>
-          </h3>
+          </p>
         </section>
 
       </section>
@@ -85,238 +88,103 @@
 
         <section>
           <h3>
-            <b>A Locality-Preserving Essence Vector Modeling
-              <br/>Framework for Spoken Document Retrieval</b>
+            <b>Spoken SQuAD</b>
           </h3>
-          <p>ICASSP 2017</p>
+          <p>Improve the performance</p>
+          <ol>
+            <li>Title as query</li>
+            <li>Term with the highest tf-idf as query</li>
+          </ol>
         </section>
 
         <section>
           <h3>
-            <b>Objective</b>
+            <b>Title</b>
           </h3>
-          <ul class="thin">
-            <li>Propose a paragraph embedding method</li>
-            <li>Distill the most representative information</li>
-            <li>Preserve semantic locality in the learned embedding space</li>
-          </ul>
-        </section>
-
-      </section>
-
-      <section>
-
-        <section>
-          <h3>
-            <b>Locality-preserving essence vector (LPEV) model</b>
-          </h3>
-          <ul class="thin">
-            <p>Given training pairs from neighboring-paragraph set $\mathbb{D}^+$ and faraway-paragraph set $\mathbb{D}^-$,
-              and vocabulary set $\mathbb{V}$,</p>
-            <li>$P_{D_t}$ ($|\mathbb{V}|$-dim): frequency count of a word/ term in $D_t$ (normalized to unit-sum)</li>
-            <li>$P_{BG}$ ($|\mathbb{V}|$-dim): frequency count of a word/ term in $\mathbb{D}$ (normalized to unit-sum)</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>
-            <b>Component: fully connected multilayer NN</b>
-          </h3>
-          <ul class="thin">
-            <li>Paragraph encoder: \[ f(P_{D_t}) = v_{D_t} \]</li>
-            <li>Background encoder: \[ g(P_{BG}) = v_{BG} \]</li>
-            <li>Decoder: \[ h(\alpha_{D_t}*v_{D_t}+(1-\alpha_{D_t})*v_{BG}) = P_{D_t}' \]</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>
-            <b>Objective function</b>
-          </h3>
-          <img data-src="https://i.imgur.com/XFdXOuw.png">
-          <img data-src="https://i.imgur.com/T53eZkx.png">
-        </section>
-
-        <section>
-          <h3>
-            <b>Architecture</b>
-          </h3>
-          <img data-src="https://i.imgur.com/TF2s1QE.png">
-        </section>
-
-      </section>
-
-      <section>
-
-        <section>
-          <h3>
-            <b>Experimental setup</b>
-          </h3>
-          <ul class="thin">
-            <li>Dataset: Topic Detection and Tracking (TDT-2)</li>
-            <li>Spoken doc: Mandarin news from Voice of America w/ labels</li>
-            <li>Query: Chinese news from Xinhua News Agency w/ labels (long: whole, short:title)</li>
-            <li>Avg word error rate (WER): 35%</li>
-            <li>Evaluation: MAP (label)</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>
-            <b>Experimental results</b>
-          </h3>
-          <div class="thin">
-            <p>Training sample: query + 1 irrelevant doc as $\mathbb{D}^-$ + ...</p>
-            <li>Case 1: 2 relevant (clicked) docs as $\mathbb{D}^+$</li>
-            <li>Case 2: top 3 documents in the 1st retrieval as $\mathbb{D}^+$</li>
-            <table>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Case 1 (long)</th>
-                  <th>Case 1 (short)</th>
-                  <th>Case 2 (long)</th>
-                  <th>Case 2 (short)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>EV</td>
-                  <td>0.518</td>
-                  <td>0.364</td>
-                  <td>0.518</td>
-                  <td>
-                    <b>0.364</b>
-                  </td>
-                </tr>
-                <tr>
-                  <td>LP</td>
-                  <td>
-                    <b>0.567</b>
-                  </td>
-                  <td>0.381</td>
-                  <td>0.507</td>
-                  <td>0.339</td>
-                </tr>
-                <tr>
-                  <td>LPEV</td>
-                  <td>0.556</td>
-                  <td>
-                    <b>0.390</b>
-                  </td>
-                  <td>
-                    <b>0.533</b>
-                  </td>
-                  <td>0.339</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-      </section>
-
-      <section>
-
-        <section>
-          <h3>
-            <b>Learning to Search with MCTSnets</b>
-          </h3>
-          <p>ICLR 2018
-            <b>Reject</b>
+          <p>Remove queries with low AP</p>
+          <p>2000 queries were removed</p>
+          <p>0.2069 ->
+            <span class="fragment">0.3372</span>
           </p>
         </section>
 
         <section>
           <h3>
-            <b>Contributions</b>
+            <b>Term with the Highest Tf-idf</b>
           </h3>
-          <ul class="thin">
-            <li>Turn search algorithms into dynamic computational graph which can be optimized by gradient-based methods</li>
-            <li>End-to-end training for solving planning problems</li>
-            <li>A neural version of Monte Carlo Tree Search</li>
+          <p>Add irrelevant documents</p>
+          <p class="fragment">No improvement</p>
+        </section>
+
+      </section>
+
+      <section>
+
+        <section>
+          <h3>
+            <b>PTV corpus</b>
+          </h3>
+          <p>Supervised baseline</p>
+          <p>Ranking SVM</p>
+        </section>
+
+        <section>
+          <h3>
+            <b>Ranking SVM</b>
+          </h3>
+          <img data-src="https://i.imgur.com/7bdiDtE.png">
+          <a class="small" href="https://www.cs.cornell.edu/people/tj/svm_light/svm_rank.html" target="_blank">Toolkit (Cornell)</a>
+        </section>
+
+        <section>
+          <h3>
+            <b>Features</b>
+          </h3>
+          <ul>
+            <li>Query embedding (49)</li>
+            <li>Document embedding (300)</li>
+            <li>Original relevance score (1)</li>
+            <li>Dimension = 350</li>
+          </ul>
+
+        </section>
+
+        <section>
+          <h3>
+            <b>Training Details</b>
+          </h3>
+          <ul>
+            <li>Cost (penalty of the error item): 1</li>
+            <li>Epsilon (specifies epsilon-tube): 0.1</li>
+            <li>10-fold Cross Validation</li>
           </ul>
         </section>
 
-      </section>
-
-      <section>
-
         <section>
           <h3>
-            <b>Monte Carlo Tree Search</b>
+            <b>Result</b>
           </h3>
-          <p class="thin">A simulation-based search algorithm that converges to a solution to the planning problem</p>
-        </section>
-
-        <section>
-          <img data-src="https://i.imgur.com/gNxuV8U.png">
+          <table>
+            <thead>
+              <th>Method</th>
+              <th>MAP</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SL</td>
+                <td>0.7269</td>
+              </tr>
+              <tr>
+                <td>RL</td>
+                <td>0.5839</td>
+              </tr>
+            </tbody>
+          </table>
         </section>
 
       </section>
 
-      <section>
-
-        <section>
-          <h3>
-            <b>MCTSnet</b>
-          </h3>
-          <p class="thin small">Initialize simulation time $t = 0$ and current node $s_0 = s_A$</p>
-          <p class="thin small">Repeat the following steps for M times</p>
-          <ol class="thin small">
-            <li>Forward simulation from root state</li>
-            <li>Sample action based on simulation policy, compute reward and next state</li>
-            <li>Evaluation final leaf node using the embedding network</li>
-            <li>Back-up using the back-up network</li>
-          </ol>
-          <p class="thin small">Readout network outputs a action from the root embedding</p>
-        </section>
-
-        <section>
-          <h3>
-            <b>Network Architecture</b>
-          </h3>
-          <ul class="thin small">
-            <li>Redidual block: 2 64 channel 3x3 conv</li>
-            <li>Embedding network: 64 channel 3x3 conv --> 3 residual blocks --> 32 channel 1x1 conv</li>
-            <li>Simulation network: 32 channel 3x3 conv --> 2 residual blocks --> 32 channel 1x1 conv</li>
-            <li>Readout network: MLP with single hidden layer (128 dim)</li>
-          </ul>
-          <img data-src="https://i.imgur.com/1looGRS.png">
-        </section>
-
-        <section>
-          <img data-src="https://i.imgur.com/TlsMrZe.png">
-        </section>
-
-        <section>
-          <img data-src="https://i.imgur.com/pA84ia9.png">
-        </section>
-
-        <section>
-          <h4><b>Gradient (Improved version of REINFORCE)</b></h4>
-          <img data-src="https://i.imgur.com/3WZjZTi.png">
-          <img data-src="https://i.imgur.com/FMXC3co.png">
-        </section>
-
-      </section>
-
-      <section>
-
-        <section>
-          <h3><b>Sokoban</b></h3>
-          <img data-src="https://i.imgur.com/JUE3b2p.gif">
-          <p class="thin">Input vector: $10 \times 10 \times 4$</p>
-          <p class="thin">wall, agent, box, target</p>
-        </section>
-
-        <section>
-          <img data-src="https://i.imgur.com/CLeliol.png">
-        </section>
-
-      </section>
-
-      <section class="last-page" data-background-image="https://i.imgur.com/iko4Bcw.png">
+      <section class="last-page" data-background="#1F1F1F">
         <h2>
           <b>End</b>
         </h2>
