@@ -184,6 +184,186 @@
 
       </section>
 
+      <section>
+
+        <section>
+          <h3>
+            <b>M-Walk: Learning to Walk in
+              <br/>Graph with Monte Carlo Tree Search</b>
+          </h3>
+          <p>ICLR 2018</p>
+        </section>
+
+        <section>
+          <h3>
+            <b>Objective</b>
+          </h3>
+          <ul class="thin">
+            <li>Recurrent neural network (RNN): encode trajectory history</li>
+            <li>Monte Carlo tree search (MCTS): obtain more positive reward</li>
+            <!-- <li>Preserve semantic locality in the learned embedding space</li> -->
+          </ul>
+        </section>
+
+      </section>
+
+      <section>
+
+        <section>
+          <h3>
+            <b>Graph walking</b>
+          </h3>
+          <ul class="thin">
+            <p>Given query $q$ and source node $n_S$, find target node $n_T$.</p>
+            <li>Markov decision process (MDP): ($\mathcal{S}$,$\mathcal{A}$,$\mathcal{R}$,$\mathcal{P}$)</li>
+            <!-- <li>$P_{BG}$ ($|\mathbb{V}|$-dim): frequency count of a word/ term in $\mathbb{D}$ (normalized to unit-sum)</li> -->
+          </ul>
+          <img data-src="https://i.imgur.com/OfSEjHK.png">
+          <img data-src="https://i.imgur.com/4B7CT79.png">
+        </section>
+
+        <section>
+          <h3>
+            <b>RNN state encoder</b>
+          </h3>
+          <ul class="thin">
+            <li>Auxiliary variable: $q_t=s_{t-1} \cup \left\{ a_{t-1}, n_t \right\}$</li>
+            <li>$n'$-th candidate action: $h_{n',t}=f_{\theta_A}(\left[ n',e_{n_t,n'} \right])$</li>
+            <li>Summary of candidate actions: $h_{A,t}=$ coordinate-wise max pooling over $\left\{ h_{n',t}:n' \in \mathcal{N}_{n_t} \right\}$</li>
+            <li>history encoding: $h_{S,t}=f_{\theta_S}(q_t)$</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>
+            <b>Neural architecture</b>
+          </h3>
+          <ul class="thin">
+            <!-- <li>score for choosing STOP action: $u_0=f_{\theta_\pi}(h_{S,t},h_{A,t})$</li> -->
+            <li>score for choosing actions: $u_0=f_{\theta_\pi}(h_{S,t},h_{A,t}), u_{n'}= \left \langle h_{S,t},h_{n',t} \right \rangle, n' \in \mathcal{N}_{n_t}$</li>
+            <li>Policy: $\pi_\theta(\cdot|s_t)=\phi_\tau(u_0,u_{n_1'},...,u_{n_k'})$ (softmax)</li>
+            <li>State value function: $V_\theta(s_t)=f_{\theta_v}(h_{S,t},h_{A,t})$</li>
+            <li>Q-func: $Q_\theta(s_t,\cdot)=\sigma(u_0,u_{n_1'},...,u_{n_k'})$ (sigmoid)</li>
+            <li>$N(s,a)$: visit count, $W(s,a)$: total action reward</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>
+            <b>Training algorithm</b>
+          </h3>
+          <img data-src="https://i.imgur.com/ixssC64.png">
+        </section>
+
+        <section>
+          <h3>
+            <b>Prediction algorithm</b>
+          </h3>
+          <ul class="thin">
+          <p>For node $n$,</p>
+          </ul>
+          <img data-src="https://i.imgur.com/h0yPq8S.png">
+          <ul class="thin">
+            <li>Predicted target node: $\hat{n}_T=argmax_n Score(n)$</li>
+          </ul>
+        </section>
+
+      </section>
+
+      <section>
+
+        <section>
+          <h3>
+            <b>Experimental setup</b>
+          </h3>
+          <ul class="thin">
+            <p>Three glass puzzle: There are 3 containers A, B, and C. Take actions until one of them contains $q$ liters of milk.</p>
+            <li>query: desired volume $q$</li>
+            <li>node: $n=(a,b,c)$ (volume)</li>
+            <li>edge: one of the actions ($\textbf{fill}, \textbf{empty}, \textbf{pour}$)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>
+            <b>Experimental setup</b>
+          </h3>
+          <ul class="thin">
+            <p>Knowledge base completion: predict missing relations between entities</p>
+            <li>Dataset: WN18RR and NELL995</li>
+            <img data-src="https://i.imgur.com/T9gV4i8.png">
+            <!-- <li>node: $n=(a,b,c)$ (volume)</li>
+            <li>edge: one of the actions ($\textbf{fill}, \textbf{empty}, \textbf{pour}$)</li> -->
+          </ul>
+        </section>
+
+        <section>
+          <h3>
+            <b>Experimental setup</b>
+          </h3>
+          <ul class="thin">
+            <p>Variants of M-walk (same architecture)</p>
+            <li>PG-Walk: training and testing same as MINERVA</li>
+            <!-- <img data-src="https://i.imgur.com/T9gV4i8.png"> -->
+            <!-- <li>node: $n=(a,b,c)$ (volume)</li> -->
+            <li>Q-Walk: training without MCTS</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>
+            <b>Results: three glass puzzle</b>
+          </h3>
+          <ul class="thin">
+            <!-- <p>Knowledge base completion: predict missing relations between entities</p> -->
+            <li>Positive reward rate</li>
+            <!-- <li>node: $n=(a,b,c)$ (volume)</li>
+            <li>edge: one of the actions ($\textbf{fill}, \textbf{empty}, \textbf{pour}$)</li> -->
+          </ul>
+          <img data-src="https://i.imgur.com/zbRVuN1.png">
+        </section>
+
+        <section>
+          <h3>
+            <b>Results: NELL995</b>
+          </h3>
+          <ul class="thin">
+            <li>MAP</li>
+          </ul>
+          <img data-src="https://i.imgur.com/0oUbO7B.png">
+          <ul class="thin">
+            <li>Positive reward rate</li>
+          </ul>
+          <img data-src="https://i.imgur.com/0fMmJKr.png">
+        </section>
+
+        <section>
+          <h3>
+            <b>Results: WN18RR</b>
+          </h3>
+          <ul class="thin">
+            <li>MAP</li>
+          </ul>
+          <img data-src="https://i.imgur.com/PYqckpV.png">
+          <ul class="thin">
+            <li>Positive reward rate</li>
+          </ul>
+          <img data-src="https://i.imgur.com/JPN5c9N.png">
+        </section>
+
+        <!-- <section>
+          <h3>
+            <b>Objective</b>
+          </h3>
+          <ul class="thin">
+            <li>Recurrent neural network (RNN): encode trajectory history</li>
+            <li>Monte Carlo tree search (MCTS): obtain more positive reward</li> -->
+            <!-- <li>Preserve semantic locality in the learned embedding space</li>
+          </ul>
+        </section> -->
+
+      </section>
+
       <section class="last-page" data-background="#1F1F1F">
         <h2>
           <b>End</b>
