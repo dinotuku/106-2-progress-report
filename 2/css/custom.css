@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+}
+
+.col {
+  flex: 1;
+}
+
+.reveal li {
+  padding: 6px 0; }
+
+.reveal .intro {
+  line-height: 1.1; }
+
+.reveal .thin {
+  font-weight: 300; }
+
+.reveal .small {
+  font-size: 0.8em;
+}
+
+.reveal .sub {
+  color: rgba(0, 0, 0, 0.6); }
+
+.reveal .last-page * {
+  color: #eee;
+  text-shadow: 2px 2px 2px #444; }
