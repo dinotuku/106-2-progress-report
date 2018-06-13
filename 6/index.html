@@ -236,6 +236,19 @@
 
         <section>
           <h3>
+            <b>Loss</b>
+          </h3>
+          <p>$$l = \sum_{t}{{(v_{\theta}(s_t) - z_t)}^2} - {\vec{\pi}}_t \cdot \log{(\vec{p}_\theta{(s_t)})}$$</p>
+          <div class="small">
+            <p>$v_{\theta}(s)$, $\vec{p}_\theta{(s)}$: Output of NN</p>
+            <p>$z_t$: Final reward of the episode (1, 0 or -1)</p>
+            <p>${\vec{\pi}}_t$: Estimate of the policy</p>
+            <p class="fragment">(Number of times actions are selected across simulations)</p>
+          </div>
+        </section>
+
+        <section>
+          <h3>
             <b>Connect 4</b>
           </h3>
           <img height="450" data-src="https://i.imgur.com/BnJVtiD.jpg">
